@@ -29,4 +29,9 @@ public class Rocket : MonoBehaviour
             transform.Rotate(0, 0, -rotationAmount);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Oh no!");
+    }
 }
