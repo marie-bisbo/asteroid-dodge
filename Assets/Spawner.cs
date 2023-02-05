@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("SpawnAsteroid", 0f, 5f);
+        // InvokeRepeating("SpawnAsteroid", 0f, 5f);
     }
 
     private void SpawnAsteroid()
