@@ -7,6 +7,6 @@ public class Asteroid : MonoBehaviour
 
     private void Start()
     {
-        rigidBody.velocity = new Vector2(0.5f, 0.5f);
+        rigidBody.velocity = new Vector2(3f, 0f);
     }
 }
