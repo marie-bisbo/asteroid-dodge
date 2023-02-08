@@ -7,6 +7,8 @@ public class Asteroid : MonoBehaviour
 
     private void Start()
     {
-        rigidBody.velocity = new Vector2(3f, 0f);
+        float velocityX = Random.Range(0f, 3f);
+        float velocityY = Random.Range(0f, 3f);
+        rigidBody.velocity = new Vector2(velocityX, velocityY);
     }
 }
