@@ -7,6 +7,7 @@ public class LandingCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Lander"))
         {
             Debug.Log("Landing...");
+            FindObjectOfType<GameManager>().OnLevelComplete();
         }
     }
 }
