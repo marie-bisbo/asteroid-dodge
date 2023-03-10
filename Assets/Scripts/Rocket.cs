@@ -31,7 +31,7 @@ public class Rocket : MonoBehaviour
             transform.Rotate(0, 0, -rotationAmount);
         }
 
-        // Attempt to correct rotation of rocket. This kind of works but the rocket seems to jitter a bit. Maybe disable if rotation is close to zero? 
+        // Attempt to correct rotation of rocket. This kind of works but the rocket seems to jitter a bit. 
         if (!Mathf.Approximately(transform.rotation.z, 0f))
         {
             if (Mathf.Approximately(Input.GetAxis("Horizontal"), 0f))
