@@ -7,6 +7,8 @@ public class LevelComplete : MonoBehaviour
 
     public void OpenMenu()
     {
+        // Make sure to pause the game in the background, otherwise the asteroid can hit the rocket and restart the level
+        Time.timeScale = 0f;
         menuUI.SetActive(true);
     }
 

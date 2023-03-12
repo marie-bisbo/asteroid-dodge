@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Asteroid
   - Lander
+  - OuterWall
   layers:
   - Default
   - TransparentFX
