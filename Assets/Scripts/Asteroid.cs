@@ -19,8 +19,8 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("OuterWall"))
         {
-            float forceX = Random.Range(-100, 100f);
-            float forceY = Random.Range(-100, 100f);
+            float forceX = Random.Range(-75f, 75f);
+            float forceY = Random.Range(-75f, 75f);
             rigidBody.AddForce(new Vector2(forceX, forceY));
         }
     }

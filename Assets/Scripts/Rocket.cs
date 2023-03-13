@@ -16,6 +16,7 @@ public class Rocket : MonoBehaviour
 
     void FixedUpdate()
     {
+        // TODO: Remove ability to add force downwards, maybe
         float moveAmountVertical = Input.GetAxis("Vertical") * movementSpeedVertical * Time.deltaTime;
         rigidBody.AddForce(new Vector2(0, moveAmountVertical));
 
@@ -50,9 +51,8 @@ public class Rocket : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Asteroid"))
+        if (collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("OuterWall"))
         {
-            Debug.Log("Asteroid hit");
             FindObjectOfType<GameManager>().OnGameOver();
         }
     }
