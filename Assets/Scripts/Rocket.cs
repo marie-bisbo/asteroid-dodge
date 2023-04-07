@@ -16,35 +16,28 @@ public class Rocket : MonoBehaviour
 
     void FixedUpdate()
     {
-        // TODO: Remove ability to add force downwards, maybe
-        float moveAmountVertical = Input.GetAxis("Vertical") * movementSpeedVertical * Time.deltaTime;
-        rigidBody.AddForce(new Vector2(0, moveAmountVertical));
+        if (Input.GetAxis("Vertical") >= 0f) // Cannot apply rocket thrust downwards
+        {
+            float moveAmountVertical = Input.GetAxis("Vertical") * movementSpeedVertical * Time.deltaTime;
+            rigidBody.AddForce(new Vector2(0, moveAmountVertical));
+        }
 
         float moveAmountHorizontal = Input.GetAxis("Horizontal") * movementSpeedHorizontal * Time.deltaTime;
         rigidBody.AddForce(new Vector2(moveAmountHorizontal, 0));
 
         float rotationAmount = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
-        // Not working at around 0.1 because of float weirdness. Fix is a bit weird, find something better maybe. Not working
-        // if (Mathf.Abs(transform.rotation.z) - 0.1 < 0 || rotationAmount < transform.rotation.z)
         if (Mathf.Abs(transform.rotation.z) - 0.1 < 0)
         {
-            // Debug.Log($"rotation amount: {rotationAmount}, rotation: {transform.rotation.z}");
             transform.Rotate(0, 0, -rotationAmount);
         }
 
         // Attempt to correct rotation of rocket. This kind of works but the rocket seems to jitter a bit. 
-        if (!Mathf.Approximately(transform.rotation.z, 0f))
+        if (!Mathf.Approximately(transform.rotation.z, 0f)) // If rotation is not already zero
         {
-            if (Mathf.Approximately(Input.GetAxis("Horizontal"), 0f))
+            if (Mathf.Approximately(Input.GetAxis("Horizontal"), 0f)) // If there is no input to change rotation
             {
-                if (transform.rotation.z > 0)
-                {
-                    transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
-                }
-                else
-                {
-                    transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
-                }
+                float direction = transform.rotation.z > 0 ? -1 : 1;
+                transform.Rotate(0, 0, direction * rotationSpeed * Time.deltaTime);
             }
         }
     }
